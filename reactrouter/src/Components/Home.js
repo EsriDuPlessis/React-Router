@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import Pokeball from '../pokeball.png'
 
 class Home extends Component {
     state = {
@@ -10,7 +12,7 @@ class Home extends Component {
           .then(res => {
               console.log(res);
               this.setState({
-                  posts: res.data.slice(0, 10)
+                posts: res.data.slice(0,10)
               });
           })
     } 
@@ -20,9 +22,12 @@ class Home extends Component {
             posts.map(post => {
                 return (
                     <div className="post card" key={post.id}>
+                      <img src={Pokeball} alt="A Pokeball" />
                         <div className="card-content">
-                            <span className="card-title">{post.title}</span>
-                            <p>{post.body}</p>
+                          <Link to={'/' + post.id}>
+                            <span className="card-title red-text">{post.title}</span>
+                          </Link> 
+                          <p>{post.body}</p>
                         </div>
                     </div>
                 )
@@ -34,7 +39,7 @@ class Home extends Component {
         <div>
             <div className="container">
                 <h4 className="center">Home</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae repudiandae repellat illo magni eligendi cupiditate voluptates eius nam voluptate. Incidunt nihil ullam quae quia officia quaerat, deserunt eligendi explicabo totam?</p>
+                {postList}
             </div>
         </div>
      )
