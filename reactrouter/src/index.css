@@ -17,8 +17,8 @@ nav a.active{
 .home .post img{
   position: absolute;
   top: 20px;
-  left: -100px;
-  opacity: 0.6;
+  left: -200px;
+  opacity: 0.2;
 }
 
 .home .post{
